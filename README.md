@@ -1,73 +1,137 @@
-# Welcome to your Lovable project
+# Era Whisperer 🎨
 
-## Project info
+**AI-Powered Time-Era Image Generator** built with React + Express + Google Gemini 2.5 Flash
 
-**URL**: https://lovable.dev/projects/2ad4c4b8-2d12-4e4c-9005-b2e63ee2ded8
+Journey through time and create stunning AI artwork from any era in human history. From the Industrial Revolution (1900s) to the far future (2050s+).
 
-## How can I edit this code?
+## ✨ Features
 
-There are several ways of editing your application.
+- 🎨 **Multi-Era Generation**: Create images for 1900s, 1950s, 2000s, and 2050s simultaneously
+- 🔧 **Image Editing**: Edit any generated image with text instructions
+- 🎭 **Image Blending**: Combine multiple images into artistic compositions
+- 🎯 **Era-Specific Prompting**: AI automatically adapts prompts for historical accuracy
+- ⚡ **Real-time Preview**: See your creations instantly in a beautiful gallery
+- 📱 **Responsive Design**: Perfect on desktop, tablet, and mobile
 
-**Use Lovable**
+## 🚀 Quick Start
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2ad4c4b8-2d12-4e4c-9005-b2e63ee2ded8) and start prompting.
+### Prerequisites
+- Node.js 20+
+- Google Gemini API key ([Get one here](https://aistudio.google.com/app/apikey))
 
-Changes made via Lovable will be committed automatically to this repo.
+### 1. Setup Backend
+```bash
+# Install backend dependencies
+cd server
+npm install
 
-**Use your preferred IDE**
+# Setup environment
+cp .env.example .env
+# Edit .env and add: GEMINI_API_KEY=your_actual_api_key_here
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start backend server (port 3001)
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 2. Setup Frontend (New Terminal)
+```bash
+# Go back to project root
+cd ..
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+# Install frontend dependencies  
+npm install
 
-**Use GitHub Codespaces**
+# Start frontend dev server (port 8080)
+npm run dev
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 3. Start Creating! 
+Visit `http://localhost:8080` and start generating era-specific artwork!
 
-## What technologies are used for this project?
+## 🎯 How to Use
 
-This project is built with:
+### Generate Images Across Eras
+1. Enter a creative prompt (e.g., "A bustling marketplace")
+2. Click "Generate 4 Era Images" 
+3. Watch AI create versions for all eras
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Edit Images
+1. Click "Edit Images" button
+2. Upload an image and describe changes
+3. Get an AI-edited version instantly
 
-## How can I deploy this project?
+### Blend Images  
+1. Click "Blend Images" button
+2. Upload 2-3 images with blending instructions
+3. Create unique artistic compositions
 
-Simply open [Lovable](https://lovable.dev/projects/2ad4c4b8-2d12-4e4c-9005-b2e63ee2ded8) and click on Share -> Publish.
+## 🛠️ Tech Stack
 
-## Can I connect a custom domain to my Lovable project?
+**Frontend**: React 18 + TypeScript + Vite + Tailwind CSS + shadcn/ui  
+**Backend**: Node.js 20 + Express + Google Generative AI  
+**API**: Google Gemini 2.5 Flash Image Preview
 
-Yes, you can!
+## 📁 Project Structure
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```
+era-whisperer/
+├── src/                    # React frontend
+│   ├── components/         # UI components  
+│   ├── services/          # API service layer
+│   └── pages/             # App pages
+├── server/                # Express backend
+│   ├── index.js          # Main server
+│   └── package.json      # Backend deps
+└── README.md            # This file
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🔧 API Reference
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Server health check |
+| `/api/generate` | POST | Generate era-specific image |
+| `/api/edit` | POST | Edit existing image |
+| `/api/blend` | POST | Blend multiple images |
+
+## 🐛 Troubleshooting
+
+**"API Key Invalid"**: Check `.env` has correct `GEMINI_API_KEY`  
+**"Connection Refused"**: Ensure backend runs on port 3001  
+**"File Too Large"**: Images must be under 15MB
+
+## 📄 Environment Setup
+
+Create `server/.env`:
+```env
+GEMINI_API_KEY=your_key_here    # Required  
+ENHANCE_PROMPTS=false           # Optional
+PORT=3001                       # Optional  
+```
+
+---
+
+## Project Info
+
+**Lovable URL**: https://lovable.dev/projects/2ad4c4b8-2d12-4e4c-9005-b2e63ee2ded8
+
+## How to edit this code?
+
+**Use Lovable**: Visit the [project link](https://lovable.dev/projects/2ad4c4b8-2d12-4e4c-9005-b2e63ee2ded8) and start prompting!
+
+**Use your IDE**: Clone, install deps, and push changes.
+```sh
+git clone <YOUR_GIT_URL>
+cd <PROJECT_NAME>
+npm i
+npm run dev
+```
+
+**Use GitHub Codespaces**: Click Code > Codespaces > New codespace
+
+## Deployment
+
+**Frontend**: Use Lovable's Share > Publish or deploy to Vercel  
+**Backend**: Deploy to Railway, Render, or Heroku with environment variables
+
+Ready to create art across time? 🕰️ Start your journey!

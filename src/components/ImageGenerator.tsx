@@ -29,14 +29,29 @@ const ImageGenerator = ({ selectedEra, onImageGenerated }: ImageGeneratorProps) 
     setIsGenerating(true);
     
     try {
-      // Simulate image generation for now
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: prompt,
+          era: selectedEra
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to generate image');
+      }
+
+      const result = await response.json();
       
       const generatedImage = {
         id: Date.now().toString(),
-        url: `https://picsum.photos/512/512?random=${Date.now()}`,
-        prompt: `${prompt} (${selectedEra}s era)`,
-        era: selectedEra
+        url: result.imageUrl,
+        prompt: result.prompt,
+        era: result.era
       };
       
       onImageGenerated(generatedImage);
@@ -49,7 +64,7 @@ const ImageGenerator = ({ selectedEra, onImageGenerated }: ImageGeneratorProps) 
     } catch (error) {
       toast({
         title: "Generation Failed",
-        description: "Unable to create image. Please try again.",
+        description: error instanceof Error ? error.message : "Unable to create image. Please try again.",
         variant: "destructive"
       });
     } finally {
